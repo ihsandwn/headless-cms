@@ -6,11 +6,11 @@
 
         <x-validation-errors class="mb-4" />
 
-        @session('status')
+        @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ $value }}
+                {{ session('status') }}
             </div>
-        @endsession
+        @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -43,6 +43,14 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+            
+            <!-- ADD THIS SECTION -->
+            <div class="text-center mt-6">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __("Don't have an account? Register") }}
+                </a>
+            </div>
+            <!-- END OF ADDED SECTION -->
         </form>
     </x-authentication-card>
 </x-guest-layout>
